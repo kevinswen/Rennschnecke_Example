@@ -37,4 +37,5 @@ public class RennenTest extends TestCase {
 	public void testLasseSchneckenKriechen() throws Exception{
 		testObject.lasseSchneckenKriechen();
 	}
+
 }
