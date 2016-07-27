@@ -22,7 +22,11 @@
     </target>
     <target name="clean">
         <delete dir="bin"/>
+    	<delete dir="/var/lib/jenkins/jobs/Rennschnecke-Job/workspace/reports/"/>
     </target>
+	<target depends="clean" name="create">
+		<mkdir dir="/var/lib/jenkins/jobs/Rennschnecke-Job/workspace/reports/"/>
+	</target>
     <target depends="clean" name="cleanall"/>
     <target depends="build-subprojects,build-project,junitreport" name="compile"/>
     <target name="build-subprojects"/>
