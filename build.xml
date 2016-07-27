@@ -46,93 +46,28 @@
         <mkdir dir="${junit.output.dir}"/>
     	<junit fork="yes" printsummary="withOutAndErr" errorProperty="RennenTest.failed" failureProperty="RennenTest.failed" logfailedtests="yes">
             <formatter type="xml"/>
-            <test name="RennenTest" todir="${junit.output.dir}"/>
+            <test name="RennenTest" todir="/var/lib/jenkins/jobs/Rennschnecke-Job/workspace/reports/"/>
             <classpath refid="Rennschnecke_Example.classpath"/>
         </junit>
       	<fail message="Tests failed. Please see test reports" if="RennenTest.failed" />
     </target>
-    <target name="Wettbüro_WetteTest">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr" errorProperty="Wettbüro_WetteTest.failed" failureProperty="Wettbüro_WetteTest.failed" logfailedtests="yes">
-            <formatter type="xml"/>
-            <test name="Wettbüro_WetteTest" todir="${junit.output.dir}"/>
-            <classpath refid="Rennschnecke_Example.classpath"/>
-        </junit>
-      	<fail message="Tests failed. Please see test reports" if="Wettbüro_WetteTest.failed" />
-    </target>
-    <target name="RennschneckeTest.testCreateRennschneckeTestObject">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr" errorProperty="RennschneckeTest.testCreateRennschneckeTestObject.failed" failureProperty="RennschneckeTest.testCreateRennschneckeTestObject.failed" logfailedtests="yes">
-            <formatter type="xml"/>
-            <test name="RennschneckeTest" todir="${junit.output.dir}"/>
-            <classpath refid="Rennschnecke_Example.classpath"/>
-        </junit>
-    	<fail message="Tests failed. Please see test reports" if="RennschneckeTest.testCreateRennschneckeTestObject.failed" />		
-    </target>
-    <target name="RennschneckeTest.setUp">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr" errorProperty="RennschneckeTest.setUp.failed" failureProperty="RennschneckeTest.setUp.failed" logfailedtests="yes">
-            <formatter type="xml"/>
-            <test name="RennschneckeTest" todir="${junit.output.dir}"/>
-            <classpath refid="Rennschnecke_Example.classpath"/>
-        </junit>
-    	<fail message="Tests failed. Please see test reports" if="RennschneckeTest.setUp.failed" />		
-    </target>
-    <target name="RennenTest.testToString">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr" errorProperty="RennenTest.testToString.failed" failureProperty="RennenTest.testToString.failed" logfailedtests="yes">
-            <formatter type="xml"/>
-            <test name="RennenTest" todir="${junit.output.dir}"/>
-            <classpath refid="Rennschnecke_Example.classpath"/>
-        </junit>
-    	<fail message="Tests failed. Please see test reports" if="RennenTest.testToString.failed" />		
-    </target>
     <target name="AllTests">
         <parallel threadCount="1" timeout="900000">
             <antcall target="RennenTest"/>
-            <antcall target="RennschneckeTest.testCreateRennschneckeTestObject"/>
-            <antcall target="RennschneckeTest.setUp"/>
-            <antcall target="RennenTest.testToString"/>
-            <antcall target="RennenTest.testCheckKonstruktor"/>
             <antcall target="RennschneckeTest"/>
-            <antcall target="RennenTest.testErmittleGewinner"/>
-            <antcall target="Hauptprogramm"/>
         </parallel>
-    </target>
-    <target name="Hauptprogramm">
-        <java classname="Hauptprogramm" failonerror="true" fork="yes">
-            <classpath refid="Rennschnecke_Example.classpath"/>
-        </java>
-    </target>
-    <target name="RennenTest.testCheckKonstruktor">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr" errorProperty="RennenTest.testCheckKonstruktor.failed" failureProperty="RennenTest.testCheckKonstruktor.failed" logfailedtests="yes">
-            <formatter type="xml"/>
-            <test name="RennenTest" todir="${junit.output.dir}"/>
-            <classpath refid="Rennschnecke_Example.classpath"/>
-        </junit>
-    	<fail message="Tests failed. Please see test reports" if="RennenTest.testCheckKonstruktor.failed" />
     </target>
     <target name="RennschneckeTest">
         <mkdir dir="${junit.output.dir}"/>
         <junit fork="yes" printsummary="withOutAndErr" errorProperty="RennschneckeTest.failed" failureProperty="RennschneckeTest.failed" logfailedtests="yes">
             <formatter type="xml"/>
-            <test name="RennschneckeTest" todir="${junit.output.dir}"/>
+            <test name="RennschneckeTest" todir="/var/lib/jenkins/jobs/Rennschnecke-Job/workspace/reports/"/>
             <classpath refid="Rennschnecke_Example.classpath"/>
         </junit>
     	<fail message="Tests failed. Please see test reports" if="RennschneckeTest.failed" />		
     </target>
-    <target name="RennenTest.testErmittleGewinner">
-        <mkdir dir="${junit.output.dir}"/>
-        <junit fork="yes" printsummary="withOutAndErr" errorProperty="RennenTest.testErmittleGewinner.failed" failureProperty="RennenTest.testErmittleGewinner.failed" logfailedtests="yes">
-            <formatter type="xml"/>
-            <test name="RennenTest" todir="${junit.output.dir}"/>
-            <classpath refid="Rennschnecke_Example.classpath"/>
-        </junit>
-    	<fail message="Tests failed. Please see test reports" if="RennenTest.testErmittleGewinner.failed" />		
-    </target>
     <target depends="AllTests" name="junitreport">
-        <junitreport todir="${junit.output.dir}">
+        <junitreport todir="/var/lib/jenkins/jobs/Rennschnecke-Job/workspace/reports/">
             <fileset dir="${junit.output.dir}">
                 <include name="TEST-*.xml"/>
             </fileset>

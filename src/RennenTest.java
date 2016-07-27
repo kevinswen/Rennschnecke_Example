@@ -27,7 +27,7 @@ public class RennenTest extends TestCase {
 	public void testErmittleGewinner() throws Exception{
 	if(testObject.ermittleGewinner()==null)
 	{
-		assertTrue(testObject.ermittleGewinner()==null); 	
+		assertTrue(testObject.ermittleGewinner()==null);	
 	}else{
 		assertFalse(testObject.ermittleGewinner()==null);
 	}
@@ -36,11 +36,5 @@ public class RennenTest extends TestCase {
 	//Methode aufgerufen wird
 	public void testLasseSchneckenKriechen() throws Exception{
 		testObject.lasseSchneckenKriechen();
-	}
-	//Testet die Methode durchführen, indem überprüft wird ob ein Gewinner
-	//vorhanden ist nachdem das Rennen durchgeführt wurde
-	public void testDurchführen() throws Exception{
-		testObject.durchführen();
-		assertFalse(testObject.ermittleGewinner()==null);  
 	}
 }
